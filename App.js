@@ -5,7 +5,7 @@ import List from './src/List/List'
 export default function App() {
   return (
     <View style={styles.container}>
-      <List dataSource="https://jsonplaceholder.typicode.com/posts"/>
+      <List/>
     </View>
   );
 }

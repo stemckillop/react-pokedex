@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button } from 'react-native'
+import React, { Component } from 'react'
+import { Button, View, StyleSheet } from 'react-native'
 
 class List extends React.Component {
 
@@ -61,16 +61,53 @@ class List extends React.Component {
 
         return (
         <>
-            <ul>
-                { data.results.map((dat) => <li key={dat.name}>{dat.name}</li>) } 
-            </ul>
-            { data.previous !== null ? <Button onPress={this.getPrevSet} title="Get Prev 20"/> : <div></div> }
-            { data.next !== null ? <Button onPress={this.getNextSet} title="Get Next 20"/> : <div></div> }
+            <div style={{width:"auto", backgroundColor:"#f00"}}>
+            
+                <View style={styles.pokedexBorder}>
+                    <View style={styles.pokedexlist}>
+                        <ul>
+                            { data.results.map((dat) => <li style={{color:"#eee", fontWeight:"bold"}} key={dat.name}>{dat.name}</li>) } 
+                        </ul>
+                    </View>
+                </View>
+                
+                <View style={styles.container} >
+                { data.previous !== null ? <Button style={styles.buttonContainer} onPress={this.getPrevSet} title="Get Prev 20"/> : <div></div> }
+                { data.next !== null ? <Button style={styles.buttonContainer} onPress={this.getNextSet} title="Get Next 20"/> : <div></div> }
+                </View>
+            </div>
+            
         </>
         )
 
     }
 
 }
+
+const styles = StyleSheet.create({
+    pokedexBorder: {
+        width:240,
+        margin:20,
+        borderRadius: 10,
+        backgroundColor:"#eee"
+    }, 
+    pokedexlist: {
+        width:200,
+        margin: 20,
+        borderRadius: 10,
+        backgroundColor:"#000"
+    },
+    container: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 20
+    },
+    buttonContainer: {
+        width:100,
+        margin:15
+    }
+  });
 
 export default List
